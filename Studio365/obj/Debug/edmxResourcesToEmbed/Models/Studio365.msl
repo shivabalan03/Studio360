@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Studio365ModelStoreContainer" CdmEntityContainer="Studio365Entities">
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="Studio365Model.Customer">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Sno" ColumnName="Sno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Denominations">
+      <EntityTypeMapping TypeName="Studio365Model.Denomination">
+        <MappingFragment StoreEntitySet="Denomination">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="RupeeCounts" ColumnName="RupeeCounts" />
+          <ScalarProperty Name="Sno" ColumnName="Sno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Histories">
+      <EntityTypeMapping TypeName="Studio365Model.History">
+        <MappingFragment StoreEntitySet="History">
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+          <ScalarProperty Name="Sno" ColumnName="Sno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lookups">
+      <EntityTypeMapping TypeName="Studio365Model.Lookup">
+        <MappingFragment StoreEntitySet="Lookups">
+          <ScalarProperty Name="Lookups" ColumnName="Lookups" />
+          <ScalarProperty Name="LookupID" ColumnName="LookupID" />
+          <ScalarProperty Name="Sno" ColumnName="Sno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookupTypes">
+      <EntityTypeMapping TypeName="Studio365Model.LookupType">
+        <MappingFragment StoreEntitySet="LookupTypes">
+          <ScalarProperty Name="LookupType1" ColumnName="LookupType" />
+          <ScalarProperty Name="LookupID" ColumnName="LookupID" />
+          <ScalarProperty Name="Sno" ColumnName="Sno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Masters">
+      <EntityTypeMapping TypeName="Studio365Model.Master">
+        <MappingFragment StoreEntitySet="Master">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="GST" ColumnName="GST" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ProductSubTypes" ColumnName="ProductSubTypes" />
+          <ScalarProperty Name="ProductTypes" ColumnName="ProductTypes" />
+          <ScalarProperty Name="Sno" ColumnName="Sno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="Studio365Model.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="Orders" ColumnName="Orders" />
+          <ScalarProperty Name="GST" ColumnName="GST" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="CustomerMobile" ColumnName="CustomerMobile" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+          <ScalarProperty Name="Sno" ColumnName="Sno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersDetails">
+      <EntityTypeMapping TypeName="Studio365Model.UsersDetail">
+        <MappingFragment StoreEntitySet="UsersDetails">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Userrole" ColumnName="Userrole" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Sno" ColumnName="Sno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="commonDetails">
+      <EntityTypeMapping TypeName="Studio365Model.commonDetail">
+        <MappingFragment StoreEntitySet="commonDetail">
+          <ScalarProperty Name="ItemDetails" ColumnName="ItemDetails" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Sno" ColumnName="Sno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

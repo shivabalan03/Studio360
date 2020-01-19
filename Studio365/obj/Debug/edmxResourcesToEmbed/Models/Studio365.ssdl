@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Studio365Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="commonDetail">
+    <Key>
+      <PropertyRef Name="Sno" />
+    </Key>
+    <Property Name="Sno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="255" />
+    <Property Name="ItemDetails" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="Sno" />
+    </Key>
+    <Property Name="Sno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="varchar" MaxLength="255" />
+    <Property Name="Name" Type="varchar" MaxLength="255" />
+    <Property Name="Mobile" Type="varchar" MaxLength="255" />
+    <Property Name="Address" Type="varchar" MaxLength="255" />
+    <Property Name="EmailID" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Denomination">
+    <Key>
+      <PropertyRef Name="Sno" />
+    </Key>
+    <Property Name="Sno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RupeeCounts" Type="varchar(max)" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="userID" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="Sno" />
+    </Key>
+    <Property Name="Sno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNo" Type="varchar" MaxLength="6" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Amount" Type="int" />
+    <Property Name="Notes" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Lookups">
+    <Key>
+      <PropertyRef Name="Sno" />
+    </Key>
+    <Property Name="Sno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LookupID" Type="uniqueidentifier" />
+    <Property Name="Lookups" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="LookupTypes">
+    <Key>
+      <PropertyRef Name="Sno" />
+    </Key>
+    <Property Name="Sno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LookupID" Type="uniqueidentifier" />
+    <Property Name="LookupType" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Master">
+    <Key>
+      <PropertyRef Name="Sno" />
+    </Key>
+    <Property Name="Sno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductTypes" Type="varchar" MaxLength="255" />
+    <Property Name="ProductSubTypes" Type="varchar" MaxLength="255" />
+    <Property Name="Price" Type="int" />
+    <Property Name="GST" Type="int" />
+    <Property Name="Status" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="Sno" />
+    </Key>
+    <Property Name="Sno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNo" Type="varchar" MaxLength="6" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="CustomerMobile" Type="varchar" MaxLength="10" />
+    <Property Name="TotalPrice" Type="int" />
+    <Property Name="Discount" Type="int" />
+    <Property Name="GST" Type="int" />
+    <Property Name="Orders" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="UsersDetails">
+    <Key>
+      <PropertyRef Name="Sno" />
+    </Key>
+    <Property Name="Sno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="255" />
+    <Property Name="MobileNumber" Type="varchar" MaxLength="15" />
+    <Property Name="Salary" Type="int" />
+    <Property Name="Userrole" Type="varchar" MaxLength="25" />
+    <Property Name="Gender" Type="varchar" MaxLength="6" />
+    <Property Name="Status" Type="varchar" MaxLength="10" />
+    <Property Name="JoinDate" Type="datetime" />
+    <Property Name="Password" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityContainer Name="Studio365ModelStoreContainer">
+    <EntitySet Name="commonDetail" EntityType="Self.commonDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Denomination" EntityType="Self.Denomination" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lookups" EntityType="Self.Lookups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookupTypes" EntityType="Self.LookupTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Master" EntityType="Self.Master" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsersDetails" EntityType="Self.UsersDetails" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

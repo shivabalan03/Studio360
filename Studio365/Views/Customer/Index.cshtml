@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = @ViewBag.Title;
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-body">
+                <form id="formCustomer" name="formCustomer">
+                    <div class="form-group row">
+                        <div class="col-lg-6">
+                            <label>Customer Name</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <input type="text" class="form-control" id="txtCustomerName" placeholder="Customer Name" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Customer Mobile</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-mobile-phone"></i>
+                                </div>
+                                <input type="text" class="form-control" min="10" max="10" id="txtCustomerMobile" placeholder="Customer Mobile Number" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Address</label>
+                                <textarea rows="3" cols="5" id="textareaCustomerAddress" class="form-control" placeholder="Customer Address"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-envelope"></i>
+                                    </div>
+                                    <input type="email" class="form-control" id="txtCustomerEmail" placeholder="Customer Email ID">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.input group -->
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success" id="btnAddCustomer"><i class="fa fa-check"></i> Submit</button>
+                        <button type="reset" class="btn btn-danger"><i class="fa fa-close"></i> Cancel</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+
+        <div class="box box-info">
+            <div class="box-body">
+                <table class="table table-sm table-bordered table-hover table-responsive" id="tblCustomerDetails">
+                    <thead>
+                        <tr>
+                            <th>Sno</th>
+                            <th>Customer Name</th>
+                            <th>Customer Mobile</th>
+                            <th>Customer Email</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Sno</th>
+                            <th>Customer Name</th>
+                            <th>Customer Mobile</th>
+                            <th>Customer Email</th>
+                            <th>Options</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/PageScripts/Customer.js"></script>
+

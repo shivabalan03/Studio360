@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="box box-info">
+    <div class="box-header primary">
+        <h3 class="box-title">Denomination Entry</h3>
+    </div>
+    <div class="box-body">
+        <div class="form-group row">
+            <div class="col-lg-12">
+                <div class="col-lg-2">
+                    <label>(Ten) 10</label>
+                    <input type="number" class="form-control" id="txtRupeeTen" placeholder="Ten Rupee Count">
+                </div>
+
+                <div class="col-lg-2">
+                    <label>(Twenty) 20</label>
+                    <input type="number" class="form-control" id="txtRupeetwenty" placeholder="Twenty Rupee Count">
+                </div>
+
+                <div class="col-lg-2">
+                    <label>(Fifty) 50</label>
+                    <input type="number" class="form-control" id="txtRupeeFifty" placeholder="Fifty Rupee Count">
+                </div>
+
+                <div class="col-lg-2">
+                    <label>(Hundred) 100</label>
+                    <input type="number" class="form-control" id="txtRupeeHundred" placeholder="Hundred Rupee Count">
+                </div>
+                <div class="col-lg-2">
+                    <label>(Two Hundred) 200</label>
+                    <input type="number" class="form-control" id="txtRupeeTwoHundred" placeholder="Two Hundred Rupee Count">
+                </div>
+
+                <div class="col-lg-2">
+                    <label>(Five Hundred) 500</label>
+                    <input type="number" class="form-control" id="txtRupeeFiveHundred" placeholder="Five Hundred Rupee Count">
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+
+                <div class="col-lg-2">
+                    <label>(Thousand) 1000</label>
+                    <input type="number" class="form-control" id="txtRupeeThousand" placeholder="Thousand Rupee Count">
+                </div>
+
+                <div class="col-lg-2">
+                    <label>(Two Thousand) 2000</label>
+                    <input type="number" class="form-control" id="txtTwoThousand" placeholder="Two Thousand Rupee Count">
+                </div>
+
+                <div class="col-lg-2 pull-right">
+                    <button type="button" id="btnAddDenomination" class="btn btn-primary pull-right" style="margin-top:15px"><i class="fa fa-plus"></i> Add</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="box box-info">
+    <div class="box-header primary">
+        <h3 class="box-title">Denomination Details</h3>
+    </div>
+    <div class="box-body">
+        <table class="table table-bordered" id="tblDenomination">
+            <thead>
+                <tr>
+                    <th>Sno</th>
+                    <th>Date</th>
+                    <th>10</th>
+                    <th>20</th>
+                    <th>50</th>
+                    <th>100</th>
+                    <th>200</th>
+                    <th>500</th>
+                    <th>1000</th>
+                    <th>2000</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table> 
+    </div>
+</div>
+<script src="~/Scripts/PageScripts/Denomination.js"></script>
