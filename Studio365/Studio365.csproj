@@ -133,6 +133,7 @@
     <Compile Include="Controllers\DenominationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MarriageOrdersController.cs" />
     <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\StudioOrdersController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -157,10 +158,16 @@
     <Compile Include="Models\LookupType.cs">
       <DependentUpon>Studio365.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MarriageOrder.cs">
+      <DependentUpon>Studio365.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Master.cs">
       <DependentUpon>Studio365.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Order.cs">
+      <DependentUpon>Studio365.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PackageConfiguration.cs">
       <DependentUpon>Studio365.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Studio365.Context.cs">
@@ -328,7 +335,9 @@
     <Content Include="Scripts\PageScripts\Customer.js" />
     <Content Include="Scripts\PageScripts\Denomination.js" />
     <Content Include="Scripts\PageScripts\Login.js" />
+    <Content Include="Scripts\PageScripts\MarriageMaster.js" />
     <Content Include="Scripts\PageScripts\Master.js" />
+    <Content Include="Scripts\PageScripts\OrderDetails.js" />
     <Content Include="Scripts\PageScripts\StudioOrders.js" />
     <Content Include="Scripts\PageScripts\Users.js" />
     <Content Include="Scripts\tether.js" />
@@ -357,6 +366,8 @@
     <Content Include="Views\Denomination\Index.cshtml" />
     <Content Include="Views\Shared\LoginLayout.cshtml" />
     <Content Include="Views\StudioOrders\OrderDetails.cshtml" />
+    <Content Include="Views\MarriageOrders\Index.cshtml" />
+    <Content Include="Views\Master\MarriageMaster.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

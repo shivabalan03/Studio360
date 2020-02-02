@@ -27,12 +27,14 @@ namespace Studio365.Models
     
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Denomination> Denominations { get; set; }
-        public virtual DbSet<History> Histories { get; set; }
         public virtual DbSet<Lookup> Lookups { get; set; }
         public virtual DbSet<LookupType> LookupTypes { get; set; }
-        public virtual DbSet<Master> Masters { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<UsersDetail> UsersDetails { get; set; }
         public virtual DbSet<commonDetail> commonDetails { get; set; }
+        public virtual DbSet<History> Histories { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Master> Masters { get; set; }
+        public virtual DbSet<MarriageOrder> MarriageOrders { get; set; }
+        public virtual DbSet<PackageConfiguration> PackageConfigurations { get; set; }
     }
 }

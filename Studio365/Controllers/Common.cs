@@ -40,6 +40,17 @@ namespace Studio365.Controllers
             public string studioAddress { get; set; }
         }
 
+        public class CommonOrderDetails
+        {
+            
+        }
+
+        public class ProductSubProductItems
+        {
+            public string Product { get; set; }
+            public string SubProduct { get; set; }
+        }
+
         public class orderDetails
         {
             public string Product { get; set; }
@@ -48,6 +59,11 @@ namespace Studio365.Controllers
             public string Price { get; set; }
             public string GST { get; set; }
             public string Total { get; set; }
+
+            public string customerName { get; set; }
+            public string customerMobile { get; set; }
+            public string Discount { get; set; }
+            public string AdvanceAmount { get; set; }
         }
 
 
@@ -60,6 +76,8 @@ namespace Studio365.Controllers
         public string statusInactive = "Inactive";
         public string lookupProduct = "Product";
         public string lookupSubProduct = "SubProduct";
+        public string lookupMarriageProduct = "Marriage-Product";
+        public string lookupMarriageSubProduct = "Marriage-SubProduct";
         public string duplicateDenomination = "Already added for the day";
         public string loginSuccess = "Login Successfully..!";
         public string loginFailure = "Please check your credentials..!";

@@ -11,7 +11,7 @@ function GetProductDetails() {
         complete: function (result) {
             var btnGroup = "";
             $.each(result.responseJSON, function (i, v) {
-                btnGroup += '<label class="btn btn-sm btn-info btnProduct"  data-sno="' + v["Sno"] + '" data-value="' + v["Lookups"] + '" style="margin: 5px"><input type="radio" style="display:none" name="Products" id="'+v["Sno"]+'" autocomplete="off" >' + v["Lookups"] + '</label >'
+                btnGroup += '<label class="btn btn-sm btn-info btnProduct"  data-sno="' + v["Sno"] + '" data-value="' + v["Lookups"] + '" style="margin: 5px"><input type="radio" style="display:none" name="Products" id="' + v["Sno"] + '" autocomplete="off" >' + v["Lookups"] + '</label >'
             });
             $("#btnGroupProduct").html(btnGroup);
         },
@@ -95,13 +95,13 @@ function GetItemDetails(product, subProduct) {
             var trHTML = "";
             trHTML += "<tr>"
             trHTML += "<td>" + ($("#tblorderDetails tbody")[0].rows.length + 1) + "</td>"
-            trHTML += "<td>" + currentProduct+ "</td>"
-            trHTML += "<td>" + currentSubProduct+ "</td>"
+            trHTML += "<td>" + currentProduct + "</td>"
+            trHTML += "<td>" + currentSubProduct + "</td>"
             trHTML += "<td>" + quantity + "</td>"
             trHTML += "<td>" + price + "</td>"
             trHTML += "<td>" + gst + "</td>"
             trHTML += "<td>" + (quantity * price) + "</td>"
-            trHTML += '<td><button type="button" id="' + result.responseJSON.Sno+'" class="btn btn-xs btn-danger btnDelete"><i class="fa fa-trash"></i></button></td>';
+            trHTML += '<td><button type="button" id="' + result.responseJSON.Sno + '" class="btn btn-xs btn-danger btnDelete"><i class="fa fa-trash"></i></button></td>';
             trHTML += "</tr>"
             $("#tblorderDetails tbody").append(trHTML);
         },
@@ -112,19 +112,27 @@ function GetItemDetails(product, subProduct) {
 
 function AddBillDetails() {
     var object = [];
-    $.each($("tblorderDetails tbody tr"), function (i, tr) {
+    var totalAmount = 0;
+    $.each($("#tblorderDetails tbody tr"), function (i, tr) {
+        totalAmount += parseInt($(tr).find('td').eq(6)[0].innerText);
+    });
+    $.each($("#tblorderDetails tbody tr"), function (i, tr) {
         var orders = {
-            Product: tr.find('td').eq(1).innerText,
-            Subproduct: tr.find('td').eq(2).innerText,
-            Quantity: tr.find('td').eq(3).innerText,
-            Price: tr.find('td').eq(4).innerText,
-            GST: tr.find('td').eq(5).innerText,
-            Total: tr.find('td').eq(6).innerText,
+            Product: $(tr).find('td').eq(1)[0].innerText,
+            Subproduct: $(tr).find('td').eq(2)[0].innerText,
+            Quantity: $(tr).find('td').eq(3)[0].innerText,
+            Price: $(tr).find('td').eq(4)[0].innerText,
+            GST: $(tr).find('td').eq(5)[0].innerText,
+            //Total: $(tr).find('td').eq(6)[0].innerText,
+            customerMobile: $("#txtCustomerMobile").val(),
+            customerName: $("#txtCustomerName").val(),
+            Discount: $("#txtDiscount").val(),
+            AdvanceAmount: $("#txtAdvance").val()
         };
         object.push(orders);
     });
     $.ajax({
-        url: "../StudioOrders/AddBillDetails?BillNo=" + $("#lblBillNo")[0].innerText,
+        url: "../StudioOrders/AddBillDetails?BillNo=" + $("#lblBillNo")[0].innerText + "&TotalAmount=" + totalAmount,
         type: "POST",
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify(object),
@@ -132,7 +140,7 @@ function AddBillDetails() {
             return result;
         },
         complete: function (result) {
-            
+
         },
         error: function (xhr) {
         }
@@ -144,7 +152,7 @@ function PrintBill() {
     var headerHTML = "<table class='table table-condensed' id='printClass'>"
     headerHTML += "<tr><td style='width:25%'>Customer Name : </td><td>Name 1</td> <td></td> <td rowspan='3'>Studio Name</td></tr>"
     headerHTML += "<tr><td>Customer Mobile : </td><td>9942667746</td> <td></td></tr>"
-    headerHTML += "<tr><td>Bill no : </td><td>" + $("#lblBillNo")[0].innerText +"</td> <td></td></tr></tbody></table>"
+    headerHTML += "<tr><td>Bill no : </td><td>" + $("#lblBillNo")[0].innerText + "</td> <td></td></tr></tbody></table>"
 
 
     headerHTML += "<table class='table table-bordered table-condensed' style='width:100%'>"
@@ -156,7 +164,7 @@ function PrintBill() {
     headerHTML += "<td colspan=''>Price</td>"
     headerHTML += "<td colspan=''>Total</td></tr>"
 
-    $.each($("#tblorderDetails tbody tr"), function(i , v) {
+    $.each($("#tblorderDetails tbody tr"), function (i, v) {
         headerHTML += "<tr><td style='width:5%'>" + $(v).find('td').eq(0)[0].innerText + "</td>"
         headerHTML += "<td style='width:22%'>" + $(v).find('td').eq(1)[0].innerText + "</td>"
         headerHTML += "<td style='width:22%'>" + $(v).find('td').eq(2)[0].innerText + "</td>"
@@ -166,7 +174,7 @@ function PrintBill() {
         headerHTML += "<td style='width:15%'>" + $(v).find('td').eq(6)[0].innerText + "</td>"
         headerHTML += "</tr>"
     });
-    
+
 
     headerHTML += "<tr><td colspan='5' style='text-align:right'> Total Amount </td><td colspan='2'>total Amount</td></tr>"
     headerHTML += "<tr><td colspan='5' style='text-align:right'> Advance Amount </td><td colspan='2'Advance Amount</td></tr>"
@@ -229,13 +237,27 @@ $(document).ready(function () {
     });
 
     $("#btnPrint").click(function () {
-        var trCount = $("tblorderDetails tbody tr").length;
+        var trCount = $("#tblorderDetails tbody tr").length;
         if (trCount > 0) {
-            PrintBill();
+            if ($("#txtCustomerMobile").val() == "") {
+                toastr.error("Please Enter Customer Mobile");
+                $("#txtCustomerMobile").focus();
+            } else if ($("#txtCustomerName").val() == "") {
+                toastr.error("Please Enter Customer Name");
+                $("#txtCustomerName").focus();
+            } else if ($("#txtAdvance").val() == "") {
+                toastr.error("Please Enter Advance Amount");
+                $("#txtAdvance").focus();
+            } else {
+                if ($("#txtDiscount").val() == "") {
+                    $("#txtDiscount").val(0);
+                }
+                PrintBill();
+            }
         } else {
-            toastr.error("Please Enter Order Details");
-        };
-    });
+                toastr.error("Please Enter Order Details");
+            };
+        });
 });
 
 $(document).on('click', '.btnProduct', function () {

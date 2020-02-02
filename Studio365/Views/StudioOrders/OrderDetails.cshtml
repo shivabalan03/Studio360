@@ -6,22 +6,77 @@
 <div class="col-lg-12">
     <div class="box box-info">
         <div class="box-body">
-            <table class="table table-bordered table-condensed" id="tblOrderDetails">
+            <table class="table table-bordered table-condensed" id="tblOrdersDetails">
                 <thead>
+                    <tr>
+                        <th width="10px">Sno</th>
+                        <th width="10px">Bill No</th>
+                        <th width="20px">Customer Name</th>
+                        <th width="25px">Customer Mobile</th>
+                        <th width="15px">Billed Date</th>
+                        <th width="10px">Total Amount</th>
+                        <th width="15px">Options</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot>
                     <tr>
                         <th>Sno</th>
                         <th>Bill No</th>
                         <th>Customer Name</th>
                         <th>Customer Mobile</th>
                         <th>Billed Date</th>
-                        <th>Total Purchase Amount</th>
+                        <th>Total Amount</th>
                         <th>Options</th>
                     </tr>
-                </thead>
-                <tbody></tbody>
+                </tfoot>
             </table>
         </div>
     </div>
-    
+
+    <div class="modal fade" id="modal-Import" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title"><span id="lblBillNo"></span> Transaction Details</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-body">
+                                <table id="tblTransactionDetails" class="table table-condensed table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th width="20%">Sno</th>
+                                            <th width="40%">Date</th>
+                                            <th width="40%">Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="2">
+                                                <input type="text" class="form-control" placeholder="Amount" id="txtAmount" />
+                                            </td>
+                                            <td><button class="btn btn-success pull-right" type="button" id="btnAddAmount"><i class="fa fa-send"></i>  Submit</button></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <!-- /.box -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
 </div>
 
+<script src="~/Scripts/PageScripts/OrderDetails.js"></script>

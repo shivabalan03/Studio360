@@ -7,13 +7,15 @@
       <Diagram DiagramId="a009e3607d7045ac90119be64589c1d2" Name="Diagram1">
         <EntityTypeShape EntityType="Studio365Model.Customer" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="Studio365Model.Denomination" Width="1.5" PointX="0.75" PointY="3.75" />
-        <EntityTypeShape EntityType="Studio365Model.History" Width="1.5" PointX="2.75" PointY="3.75" />
         <EntityTypeShape EntityType="Studio365Model.Lookup" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="Studio365Model.LookupType" Width="1.5" PointX="4.75" PointY="3.75" />
-        <EntityTypeShape EntityType="Studio365Model.Master" Width="1.5" PointX="6.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Studio365Model.Order" Width="1.5" PointX="0.75" PointY="6.75" />
         <EntityTypeShape EntityType="Studio365Model.UsersDetail" Width="1.5" PointX="2.75" PointY="6.75" />
         <EntityTypeShape EntityType="Studio365Model.commonDetail" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="Studio365Model.History" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="Studio365Model.Order" Width="1.5" PointX="7.375" PointY="6.75" />
+        <EntityTypeShape EntityType="Studio365Model.Master" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Studio365Model.MarriageOrder" Width="1.5" PointX="9.375" PointY="4.75" />
+        <EntityTypeShape EntityType="Studio365Model.PackageConfiguration" Width="1.5" PointX="9.375" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

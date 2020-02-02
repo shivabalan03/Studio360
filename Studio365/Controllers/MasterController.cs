@@ -14,13 +14,21 @@ namespace Studio365.Controllers
         // GET: Master
         public ActionResult Index()
         {
-            ViewBag.Title = "Master";
+            ViewBag.Title = "Studio Master";
             ViewBag.SubTitle = "Product & Sub Product Details";
             ViewBag.Page = "Master";
             return View();
         }
 
-        public JsonResult AddNewProduct(string Product)
+        public ActionResult MarriageMaster()
+        {
+            ViewBag.Title = "Marriage Master";
+            ViewBag.SubTitle = "Product & Sub Product Details";
+            ViewBag.Page = "Master";
+            return View();
+        }
+
+        public JsonResult AddNewProduct(string Product, string Type)
         {
             Common common = new Common();
             Studio365Entities Entity = new Studio365Entities();
@@ -32,9 +40,18 @@ namespace Studio365.Controllers
             try
             {
                 Lookup lookup = new Lookup();
-                lookup.LookupID = Guid.Parse((from lookupType in Entity.LookupTypes
-                                              where lookupType.LookupType1 == common.lookupProduct
-                                              select lookupType.LookupID.ToString()).FirstOrDefault());
+                if(Type == "Studio")
+                {
+                    lookup.LookupID = Guid.Parse((from lookupType in Entity.LookupTypes
+                                                  where lookupType.LookupType1 == common.lookupProduct
+                                                  select lookupType.LookupID.ToString()).FirstOrDefault());
+                } else
+                {
+                    lookup.LookupID = Guid.Parse((from lookupType in Entity.LookupTypes
+                                                  where lookupType.LookupType1 == common.lookupMarriageProduct
+                                                  select lookupType.LookupID.ToString()).FirstOrDefault());
+                }
+                
                 lookup.Lookups = Product;
                 int existing = (from l in Entity.Lookups where l.LookupID == lookup.LookupID && l.Lookups == Product select l).Count();
                 if(existing == 0)
@@ -56,7 +73,7 @@ namespace Studio365.Controllers
             return Json(responseData, JsonRequestBehavior.AllowGet); //responseData;
         }
 
-        public ResponseData AddNewSubProduct(string SubProduct)
+        public JsonResult AddNewSubProduct(string SubProduct, string Type)
         {
             Common common = new Common();
             Studio365Entities Entity = new Studio365Entities();
@@ -69,11 +86,19 @@ namespace Studio365.Controllers
             try
             {
                 Lookup lookup = new Lookup();
-                lookup.LookupID = Guid.Parse((from lookupType in Entity.LookupTypes
-                                 where lookupType.LookupType1 == common.lookupSubProduct
-                                 select lookupType.LookupID.ToString()).FirstOrDefault());
+                if(Type == "Studio")
+                {
+                    lookup.LookupID = Guid.Parse((from lookupType in Entity.LookupTypes
+                                                  where lookupType.LookupType1 == common.lookupSubProduct
+                                                  select lookupType.LookupID.ToString()).FirstOrDefault());
+                }
+                else {
+                    lookup.LookupID = Guid.Parse((from lookupType in Entity.LookupTypes
+                                                  where lookupType.LookupType1 == common.lookupMarriageSubProduct
+                                                  select lookupType.LookupID.ToString()).FirstOrDefault());
+                }
                 lookup.Lookups = SubProduct;
-                int existing = (from lt in Entity.LookupTypes where lt.LookupID == lookup.LookupID && lt.LookupType1 == SubProduct select lt).Count();
+                int existing = (from lt in Entity.Lookups where lt.LookupID == lookup.LookupID && lt.Lookups == SubProduct select lt).Count();
                 if(existing == 0)
                 {
                     Entity.Lookups.Add(lookup);
@@ -90,11 +115,11 @@ namespace Studio365.Controllers
                 responseData.Message = ex.Message.ToString();
             }
 
-            return responseData;
+            return Json(responseData, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetProductDetails()
-        {
+        public JsonResult GetProductDetails(string Type)
+       {
             Common common = new Common();
             Studio365Entities Entity = new Studio365Entities();
             ResponseData responseData = new ResponseData();
@@ -102,9 +127,20 @@ namespace Studio365.Controllers
             {
                 responseData.ReturnType = "";
                 responseData.Message = common.SuccessMessage;
-                Guid lookupID = Guid.Parse((from l in Entity.LookupTypes where l.LookupType1 == common.lookupProduct
-                                            select l.LookupID.ToString()).FirstOrDefault());
-                responseData.Content = (from lp in Entity.Lookups where lp.LookupID == lookupID select lp.Lookups).ToList();
+                Guid lookupID = Guid.NewGuid();
+                if(Type == "Studio")
+                {
+                    lookupID = Guid.Parse((from l in Entity.LookupTypes
+                                                where l.LookupType1 == common.lookupProduct
+                                                select l.LookupID.ToString()).FirstOrDefault());
+                    responseData.Content = (from lp in Entity.Lookups where lp.LookupID == lookupID select lp.Lookups).ToList();
+                } else
+                {
+                    lookupID = Guid.Parse((from l in Entity.LookupTypes
+                                           where l.LookupType1 == common.lookupMarriageProduct
+                                           select l.LookupID.ToString()).FirstOrDefault());
+                    responseData.Content = (from lp in Entity.Lookups where lp.LookupID == lookupID select lp.Lookups).ToList();
+                }
             }
             catch(Exception ex)
             {
@@ -113,7 +149,7 @@ namespace Studio365.Controllers
             return Json(responseData, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetSubProductDetails()
+        public JsonResult GetSubProductDetails(string Type)
         {
             Common common = new Common();
             Studio365Entities Entity = new Studio365Entities();
@@ -122,9 +158,21 @@ namespace Studio365.Controllers
             {
                 responseData.ReturnType = "";
                 responseData.Message = common.SuccessMessage;
-                Guid lookupID = Guid.Parse((from l in Entity.LookupTypes where l.LookupType1 == common.lookupSubProduct
-                                            select l.LookupID.ToString()).FirstOrDefault());
-                responseData.Content = (from lp in Entity.Lookups where lp.LookupID == lookupID select lp.Lookups).ToList();
+                Guid lookupID = Guid.NewGuid();
+                if(Type == "Studio")
+                {
+                    lookupID = Guid.Parse((from l in Entity.LookupTypes
+                                                where l.LookupType1 == common.lookupSubProduct
+                                                select l.LookupID.ToString()).FirstOrDefault());
+                    responseData.Content = (from lp in Entity.Lookups where lp.LookupID == lookupID select lp.Lookups).ToList();
+                } else
+                {
+                    lookupID = Guid.Parse((from l in Entity.LookupTypes
+                                                where l.LookupType1 == common.lookupMarriageSubProduct
+                                                select l.LookupID.ToString()).FirstOrDefault());
+                    responseData.Content = (from lp in Entity.Lookups where lp.LookupID == lookupID select lp.Lookups).ToList();
+                }
+                
             }
             catch (Exception ex)
             {
@@ -133,7 +181,7 @@ namespace Studio365.Controllers
             return Json(responseData, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult AddMasterDetails(Master master)
+        public JsonResult AddMasterDetails(Master master, string Type)
         {
             Common common = new Common();
             ResponseData responseData = new ResponseData()
@@ -144,6 +192,7 @@ namespace Studio365.Controllers
             try
             {
                 master.Status = common.statusActive;
+                master.Type = Type;
                 Studio365Entities entity = new Studio365Entities();
                 entity.Masters.Add(master);
                 entity.SaveChanges();
@@ -157,7 +206,7 @@ namespace Studio365.Controllers
             return Json(responseData, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetMasterDetails()
+        public JsonResult GetMasterDetails(string Type)
         {
             Common common = new Common();
             Studio365Entities Entity = new Studio365Entities();
@@ -168,7 +217,7 @@ namespace Studio365.Controllers
             };
             try
             {
-                lstMaster = (from m in Entity.Masters select m).ToList();
+                lstMaster = (from m in Entity.Masters where m.Type == Type select m).ToList();
             }
             catch(Exception ex)
             {
@@ -246,6 +295,34 @@ namespace Studio365.Controllers
 
             }
             return Json(commonDetail, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult AddPackageDetails(List<ProductSubProductItems> lstProductSubProductItems, string PackageName)
+        {
+            Common common = new Common();
+            Studio365Entities Entity = new Studio365Entities();
+            ResponseData responseData = new ResponseData()
+            {
+                ReturnType = common.SuccessMessage
+            };
+            try
+            {
+                PackageConfiguration package = new PackageConfiguration()
+                {
+                    PackageName = PackageName,
+                    PackageDetails = JsonConvert.SerializeObject(lstProductSubProductItems),
+                    Date = DateTime.Now,
+                    EmployeeID = "",
+                };
+                Entity.PackageConfigurations.Add(package);
+                Entity.SaveChanges();
+                responseData.Message = common.SuccessMessage;
+            }
+            catch(Exception ex)
+            {
+                responseData.Message = ex.Message.ToString();
+            }
+            return Json(responseData, JsonRequestBehavior.AllowGet);
         }
     }
 }

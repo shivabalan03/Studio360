@@ -23,17 +23,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Histories">
-      <EntityTypeMapping TypeName="Studio365Model.History">
-        <MappingFragment StoreEntitySet="History">
-          <ScalarProperty Name="Notes" ColumnName="Notes" />
-          <ScalarProperty Name="Amount" ColumnName="Amount" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="BillNo" ColumnName="BillNo" />
-          <ScalarProperty Name="Sno" ColumnName="Sno" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Lookups">
       <EntityTypeMapping TypeName="Studio365Model.Lookup">
         <MappingFragment StoreEntitySet="Lookups">
@@ -48,32 +37,6 @@
         <MappingFragment StoreEntitySet="LookupTypes">
           <ScalarProperty Name="LookupType1" ColumnName="LookupType" />
           <ScalarProperty Name="LookupID" ColumnName="LookupID" />
-          <ScalarProperty Name="Sno" ColumnName="Sno" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Masters">
-      <EntityTypeMapping TypeName="Studio365Model.Master">
-        <MappingFragment StoreEntitySet="Master">
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="GST" ColumnName="GST" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="ProductSubTypes" ColumnName="ProductSubTypes" />
-          <ScalarProperty Name="ProductTypes" ColumnName="ProductTypes" />
-          <ScalarProperty Name="Sno" ColumnName="Sno" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Orders">
-      <EntityTypeMapping TypeName="Studio365Model.Order">
-        <MappingFragment StoreEntitySet="Orders">
-          <ScalarProperty Name="Orders" ColumnName="Orders" />
-          <ScalarProperty Name="GST" ColumnName="GST" />
-          <ScalarProperty Name="Discount" ColumnName="Discount" />
-          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
-          <ScalarProperty Name="CustomerMobile" ColumnName="CustomerMobile" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="BillNo" ColumnName="BillNo" />
           <ScalarProperty Name="Sno" ColumnName="Sno" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -99,6 +62,73 @@
           <ScalarProperty Name="ItemDetails" ColumnName="ItemDetails" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Sno" ColumnName="Sno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Histories">
+      <EntityTypeMapping TypeName="Studio365Model.History">
+        <MappingFragment StoreEntitySet="History">
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+          <ScalarProperty Name="Sno" ColumnName="Sno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="Studio365Model.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="Orders" ColumnName="Orders" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="AdvanceAmount" ColumnName="AdvanceAmount" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerMobile" ColumnName="CustomerMobile" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+          <ScalarProperty Name="Sno" ColumnName="Sno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Masters">
+      <EntityTypeMapping TypeName="Studio365Model.Master">
+        <MappingFragment StoreEntitySet="Master">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="GST" ColumnName="GST" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ProductSubTypes" ColumnName="ProductSubTypes" />
+          <ScalarProperty Name="ProductTypes" ColumnName="ProductTypes" />
+          <ScalarProperty Name="Sno" ColumnName="Sno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MarriageOrders">
+      <EntityTypeMapping TypeName="Studio365Model.MarriageOrder">
+        <MappingFragment StoreEntitySet="MarriageOrders">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="AdvanceAmount" ColumnName="AdvanceAmount" />
+          <ScalarProperty Name="OrderDetails" ColumnName="OrderDetails" />
+          <ScalarProperty Name="CustomerDetails" ColumnName="CustomerDetails" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+          <ScalarProperty Name="sno" ColumnName="sno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PackageConfigurations">
+      <EntityTypeMapping TypeName="Studio365Model.PackageConfiguration">
+        <MappingFragment StoreEntitySet="PackageConfiguration">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="PackageDetails" ColumnName="PackageDetails" />
+          <ScalarProperty Name="PackageName" ColumnName="PackageName" />
+          <ScalarProperty Name="sno" ColumnName="sno" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

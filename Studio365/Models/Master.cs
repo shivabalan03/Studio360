@@ -19,6 +19,7 @@ namespace Studio365.Models
         public string ProductSubTypes { get; set; }
         public Nullable<int> Price { get; set; }
         public Nullable<int> GST { get; set; }
+        public string Type { get; set; }
         public string Status { get; set; }
     }
 }

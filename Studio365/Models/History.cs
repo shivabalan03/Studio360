@@ -18,6 +18,7 @@ namespace Studio365.Models
         public string BillNo { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public Nullable<int> Amount { get; set; }
+        public string EmployeeID { get; set; }
         public string Notes { get; set; }
     }
 }

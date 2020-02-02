@@ -1,0 +1,235 @@
+﻿
+@{
+    ViewBag.Title = @ViewBag.Title;
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-body">
+                <form id="formAddMaster" name="formAddMaster">
+                    <!-- Date dd/mm/yyyy -->
+                    <div class="form-group row">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label>Product</label>
+                                    <select id="ddProduct" name="ProductTypes" class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="9" tabindex="-1" aria-hidden="true">
+                                        <option value="Select">Select</option>
+                                    </select>
+                                    <span class="input-group-btn">
+                                        <button type="button" id="btnModalNewProduct" style="margin-top: 24px;height: 34px;" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modal-NewProductDetails">New</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label>Sub Product (or) Size</label>
+                                    <select id="ddSubProduct" name="ProductSubTypes" class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="9" tabindex="-1" aria-hidden="true">
+                                        <option value="Select">Select</option>
+                                    </select>
+                                    <span class="input-group-btn">
+                                        <button type="button" id="btnModalNewSubProduct" style="margin-top: 24px;height: 34px;" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modal-NewSubProductDetails">New</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Price</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-rupee"></i>
+                                </div>
+                                <input type="number" name="Price" class="form-control" id="txtPrice" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>GST</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-rupee"></i>
+                                </div>
+                                <input type="number" name="GST" class="form-control" id="txtGST" required>
+                            </div>
+                        </div>
+                        <!-- /.input group -->
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success" id="btnAddMaster"><i class="fa fa-check"></i> Submit</button>
+                        <button type="reset" class="btn btn-danger"><i class="fa fa-close"></i> Cancel</button>
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-primary" id="masterPackage" data-toggle="modal" data-target="#modal-Package"><i class="fa fa-plus"></i> Package</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+
+
+        <div class="box box-info">
+            <div class="box-body">
+                <table class="table table-sm table-bordered table-hover table-responsive" id="tblMasterMarriageDetails">
+                    <thead>
+                        <tr>
+                            <th>Sno</th>
+                            <th>Product</th>
+                            <th>Sub Product</th>
+                            <th>Price</th>
+                            <th>GST</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Sno</th>
+                            <th>Product</th>
+                            <th>Sub Product</th>
+                            <th>Price</th>
+                            <th>GST</th>
+                            <th>Options</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="modal-NewProductDetails" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">Add New Product</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-body">
+                                <div class="form-group row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group row">
+                                            <label>Product</label>
+                                            <input type="text" class="form-control" id="txtProduct" placeholder="Product Name" required><br />
+                                            <button type="button" class="btn btn-success" id="btnNewAddProduct"><i class="fa fa-check"></i> Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <div class="modal fade" id="modal-NewSubProductDetails" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">Sub Product Details</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-body">
+                                <form id="formAddSubProduct" name="formSubProduct" action="Master/AddStudioDetails">
+                                    <div class="form-group row">
+                                        <div class="col-lg-12">
+                                            <div class="form-group row">
+                                                <label>Sub Product (or) Product Size</label>
+                                                <input type="text" class="form-control" id="txtSubProduct" placeholder="Sub Product Name" required><br />
+                                                <button type="button" class="btn btn-success" id="btnAddSubProduct"><i class="fa fa-check"></i> Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    
+    <div class="modal fade" id="modal-Package" style="display: none;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">Add Package Details</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-body">
+                                <form id="formAddPackage" name="formAddProduct" action="#">
+                                    <div class="form-group row">
+                                        <div class="col-lg-12">
+                                            <div class="form-group row">
+                                                <div class="col-lg-4">
+                                                    <label>Package Name</label>
+                                                    <input type="text" class="form-control" id="txtPackageName" placeholder="Package Name" required />
+                                                </div>
+                                                <br /><br /><br /><br />
+                                                <div class="col-lg-12">
+                                                    <label>Required Items</label>
+                                                </div>
+                                                <div id="divorders">
+                                                    <div class="col-lg-12 orderItems row" id="divPackageItems" style="margin-top:5px">
+                                                        <div class="col-lg-4">
+                                                            <select id="ddPackageProduct" name="ProductTypes" class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="9" tabindex="-1" aria-hidden="true">
+                                                                <option value="Select">Product Select</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <select id="ddPackageSubProduct" name="ProductSubTypes" class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="9" tabindex="-1" aria-hidden="true">
+                                                                <option value="Select">Sub Product Select</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <button type="button" id="" class="btn btn-success btnAddManualEntry"><i class="fa fa-plus"></i></button>
+                                                            <button type="button" id="" class="btn btn-danger btnDeleteManualEntry"><i class="fa fa-trash"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box -->
+                            <div class="box-footer">
+                                <div class="col-lg-12 row">
+                                    <button type="button" class="btn btn-success" id="btnAddPackage"><i class="fa fa-check"></i> Add Package</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</div>
+
+<script src="~/Scripts/PageScripts/MarriageMaster.js"></script>
+

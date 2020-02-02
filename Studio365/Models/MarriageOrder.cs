@@ -12,17 +12,16 @@ namespace Studio365.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Order
+    public partial class MarriageOrder
     {
-        public int Sno { get; set; }
+        public int sno { get; set; }
         public string BillNo { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
-        public string CustomerMobile { get; set; }
-        public string CustomerName { get; set; }
+        public string CustomerDetails { get; set; }
+        public string OrderDetails { get; set; }
         public Nullable<int> AdvanceAmount { get; set; }
-        public Nullable<int> Discount { get; set; }
+        public Nullable<int> DiscountAmount { get; set; }
         public Nullable<int> Total { get; set; }
-        public string Orders { get; set; }
         public string EmployeeID { get; set; }
     }
 }

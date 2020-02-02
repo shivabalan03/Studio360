@@ -3,13 +3,15 @@
   <EntityContainer Name="Studio365Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Customers" EntityType="Studio365Model.Customer" />
     <EntitySet Name="Denominations" EntityType="Studio365Model.Denomination" />
-    <EntitySet Name="Histories" EntityType="Studio365Model.History" />
     <EntitySet Name="Lookups" EntityType="Studio365Model.Lookup" />
     <EntitySet Name="LookupTypes" EntityType="Studio365Model.LookupType" />
-    <EntitySet Name="Masters" EntityType="Studio365Model.Master" />
-    <EntitySet Name="Orders" EntityType="Studio365Model.Order" />
     <EntitySet Name="UsersDetails" EntityType="Studio365Model.UsersDetail" />
     <EntitySet Name="commonDetails" EntityType="Studio365Model.commonDetail" />
+    <EntitySet Name="Histories" EntityType="Studio365Model.History" />
+    <EntitySet Name="Orders" EntityType="Studio365Model.Order" />
+    <EntitySet Name="Masters" EntityType="Studio365Model.Master" />
+    <EntitySet Name="MarriageOrders" EntityType="Studio365Model.MarriageOrder" />
+    <EntitySet Name="PackageConfigurations" EntityType="Studio365Model.PackageConfiguration" />
   </EntityContainer>
   <EntityType Name="Customer">
     <Key>
@@ -31,16 +33,6 @@
     <Property Name="Date" Type="DateTime" Precision="3" />
     <Property Name="userID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="History">
-    <Key>
-      <PropertyRef Name="Sno" />
-    </Key>
-    <Property Name="Sno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="BillNo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
-    <Property Name="Date" Type="DateTime" Precision="3" />
-    <Property Name="Amount" Type="Int32" />
-    <Property Name="Notes" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-  </EntityType>
   <EntityType Name="Lookup">
     <Key>
       <PropertyRef Name="Sno" />
@@ -56,30 +48,6 @@
     <Property Name="Sno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="LookupID" Type="Guid" />
     <Property Name="LookupType1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="Master">
-    <Key>
-      <PropertyRef Name="Sno" />
-    </Key>
-    <Property Name="Sno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ProductTypes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="ProductSubTypes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="Price" Type="Int32" />
-    <Property Name="GST" Type="Int32" />
-    <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="Order">
-    <Key>
-      <PropertyRef Name="Sno" />
-    </Key>
-    <Property Name="Sno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="BillNo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
-    <Property Name="Date" Type="DateTime" Precision="3" />
-    <Property Name="CustomerMobile" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="TotalPrice" Type="Int32" />
-    <Property Name="Discount" Type="Int32" />
-    <Property Name="GST" Type="Int32" />
-    <Property Name="Orders" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="UsersDetail">
     <Key>
@@ -102,5 +70,67 @@
     <Property Name="Sno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="ItemDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="Sno" />
+    </Key>
+    <Property Name="Sno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BillNo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Amount" Type="Int32" />
+    <Property Name="EmployeeID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Notes" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Sno" />
+    </Key>
+    <Property Name="Sno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BillNo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="CustomerMobile" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="AdvanceAmount" Type="Int32" />
+    <Property Name="Discount" Type="Int32" />
+    <Property Name="Total" Type="Int32" />
+    <Property Name="Orders" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Master">
+    <Key>
+      <PropertyRef Name="Sno" />
+    </Key>
+    <Property Name="Sno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductTypes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ProductSubTypes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="GST" Type="Int32" />
+    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MarriageOrder">
+    <Key>
+      <PropertyRef Name="sno" />
+    </Key>
+    <Property Name="sno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BillNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="CustomerDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="OrderDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AdvanceAmount" Type="Int32" />
+    <Property Name="DiscountAmount" Type="Int32" />
+    <Property Name="Total" Type="Int32" />
+    <Property Name="EmployeeID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PackageConfiguration">
+    <Key>
+      <PropertyRef Name="sno" />
+    </Key>
+    <Property Name="sno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PackageName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PackageDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="EmployeeID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>
